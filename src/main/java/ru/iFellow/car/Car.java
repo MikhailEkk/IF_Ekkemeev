@@ -61,7 +61,7 @@ public abstract class Car {
         } else {
             System.out.println("Бак пуст! Нужно заправиться.");
         }
-    };
+    }
 
     /**
      * Получить информацию об автомобиле
@@ -76,7 +76,7 @@ public abstract class Car {
         System.out.println("Цвет: " + getColor());
         System.out.println("Топливо в баке: " + getFuelQuantity() + " л.");
         System.out.println("Год выпуска: " + getYear());
-    };
+    }
 
     /**
      * Заправить машину

@@ -13,7 +13,7 @@ public class Lixiang extends Car {
         } else {
             System.out.println("Бак пуст! Нужно заправиться. Или китаец сломался(");
         }
-    };
+    }
 
     /**
      * Заправить/подзарядить автомобиль
