@@ -88,15 +88,15 @@ public class ProjectTestPage {
     public void completeTask() {
         tasks.click();
         reportedByMeTabs.shouldBe(visible).click();
-        inWorkBtn.click();
-        fulfilledBtn.shouldBe(visible, Duration.ofSeconds(25));
-        bisinessProcess.shouldBe(visible, Duration.ofSeconds(15)).click();
+        inWorkBtn.shouldBe(visible, Duration.ofSeconds(25)).click();
+        fulfilledBtn.should(exist, Duration.ofSeconds(25));
+        bisinessProcess.shouldBe(visible, Duration.ofSeconds(25)).click();
         fulfilledBtn.should(appear, Duration.ofSeconds(15))
                 .shouldBe(interactable)
                 .click();
         fulfilledBtnInForm.shouldBe(visible, Duration.ofSeconds(15))
                 .click();
-        completedBtn.shouldBe(visible, Duration.ofSeconds(15));
+        completedBtn.should(exist, Duration.ofSeconds(15));
         bisinessProcess.shouldBe(visible, Duration.ofSeconds(15))
                 .click();
         completedBtn.should(appear, Duration.ofSeconds(15))

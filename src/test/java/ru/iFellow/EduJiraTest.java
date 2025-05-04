@@ -1,5 +1,6 @@
 package ru.iFellow;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.DisplayName;
@@ -73,7 +74,7 @@ public class EduJiraTest extends WebHooks {
         taskCounterTest();
         projectTestPage.search("TestSeleniumATHomework");
 
-        String statusText = seleniumATHomeworkPage.getStatus().getText();
+        String statusText = seleniumATHomeworkPage.getStatus().shouldBe(Condition.visible, Duration.ofSeconds(25)).getText();
         String status = seleniumATHomeworkPage.getStatusValue().getText();
         assertEquals("Статус: СДЕЛАТЬ", statusText + ' ' + status);
 
