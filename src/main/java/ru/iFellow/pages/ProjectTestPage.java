@@ -1,9 +1,10 @@
 package ru.iFellow.pages;
 
 import com.codeborne.selenide.ElementsCollection;
-import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
@@ -11,6 +12,8 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class ProjectTestPage {
+
+    private static final Logger logger = LoggerFactory.getLogger(ProjectTestPage.class);
 
     private final SelenideElement createTaskBtn = $x("//a[@id='create_link']").as("Кнопка создания задачи");
     private final SelenideElement taskCounter = $x("//div[@class='showing']").as("Номер задачи из всего количества");
@@ -37,6 +40,7 @@ public class ProjectTestPage {
     private final SelenideElement fulfilledBtn = $x("//div[@class='aui-dropdown2-item-group']//span[contains(text(), 'Исполнено')]/parent::a").as("Бизнес-процесс Исполнено");
     private final SelenideElement fulfilledBtnInForm = $x("//input[@id='issue-workflow-transition-submit']").as("Кнопка 'исполнено' на форме");
     private final SelenideElement fieldInput = $x("//body[@id='tinymce']").as("Поле ввода на фреймах");
+    private final SelenideElement form = $x("//div[@id='workflow-transition-51-dialog']").as("Форма Исполнено");
 
     public int getTotalTasksCount() {
         String totalCount = taskCounter.getText();
@@ -88,20 +92,22 @@ public class ProjectTestPage {
 
     public void completeTask() {
         tasks.click();
-        reportedByMeTabs.shouldBe(visible).click();
-        inWorkBtn.shouldBe(visible, Duration.ofSeconds(25)).click();
-        fulfilledBtn.should(exist, Duration.ofSeconds(25));
-        bisinessProcess.shouldBe(visible, Duration.ofSeconds(25)).click();
-        fulfilledBtn.should(appear, Duration.ofSeconds(15))
-                .shouldBe(interactable)
+        reportedByMeTabs.shouldBe(visible)
+                .click();
+        inWorkBtn.shouldBe(visible, Duration.ofSeconds(25))
+                .click();
+        fulfilledBtn.shouldBe(exist, Duration.ofSeconds(25));
+        bisinessProcess.shouldBe(visible, Duration.ofSeconds(25))
+                .click();
+        fulfilledBtn.shouldBe(visible, Duration.ofSeconds(25))
                 .click();
         fulfilledBtnInForm.shouldBe(visible, Duration.ofSeconds(15))
                 .click();
-        completedBtn.should(exist, Duration.ofSeconds(15));
-        bisinessProcess.shouldBe(visible, Duration.ofSeconds(15))
+        form.shouldNotBe(visible);
+        completedBtn.shouldBe(exist, Duration.ofSeconds(100));
+        bisinessProcess.shouldBe(visible, Duration.ofSeconds(40))
                 .click();
-        completedBtn.should(appear, Duration.ofSeconds(15))
-                .shouldBe(interactable)
+        completedBtn.shouldBe(visible, Duration.ofSeconds(40))
                 .click();
     }
 
