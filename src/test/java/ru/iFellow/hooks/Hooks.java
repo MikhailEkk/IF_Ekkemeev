@@ -1,4 +1,4 @@
-package ru.iFellow.steps;
+package ru.iFellow.hooks;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
