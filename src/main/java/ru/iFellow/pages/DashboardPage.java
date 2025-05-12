@@ -20,7 +20,7 @@ public class DashboardPage {
         nameProject.shouldBe(Condition.visible, Duration.ofSeconds(2000));
     }
 
-    public boolean isNameProjectPresent() {
-        return nameProject.exists();
+    public void isNameProjectVisible() {
+        nameProject.shouldBe(Condition.visible, Duration.ofSeconds(5000));
     }
 }
