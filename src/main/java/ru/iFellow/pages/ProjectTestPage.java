@@ -3,6 +3,8 @@ package ru.iFellow.pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.Keys;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 
@@ -10,6 +12,8 @@ import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class ProjectTestPage {
+
+    private static final Logger logger = LoggerFactory.getLogger(ProjectTestPage.class);
 
     private final SelenideElement createTaskBtn = $x("//a[@id='create_link']").as("Кнопка создания задачи");
     private final SelenideElement taskCounter = $x("//div[@class='showing']").as("Номер задачи из всего количества");
