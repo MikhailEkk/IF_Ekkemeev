@@ -9,8 +9,8 @@ import ru.iFellow.steps.RickAndMortySteps;
 
 import java.util.List;
 
-import static ru.iFellow.dto.RickAndMorty.Character.extractNumber;
-import static ru.iFellow.dto.RickAndMorty.Character.findLastEpisode;
+import static ru.iFellow.utils.CharacterUtils.extractNumber;
+import static ru.iFellow.utils.CharacterUtils.findLastEpisode;
 
 public class RickAndMortyTests {
 

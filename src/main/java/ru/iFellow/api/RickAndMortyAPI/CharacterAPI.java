@@ -1,24 +1,11 @@
 package ru.iFellow.api.RickAndMortyAPI;
 
-import io.restassured.response.ValidatableResponse;
-
-import static io.restassured.RestAssured.given;
-
 public class CharacterAPI extends BaseRickAndMortyAPI {
 
-    private static final String CHARACTER_END_POINT = "/character";
+    private static final String CHARACTER_END_POINT = props.getString("character.endpoint");
 
-    public ValidatableResponse getByName(String name) {
-        return given()
-                .when()
-                .get(CHARACTER_END_POINT + "/?name=" + name)
-                .then();
-    }
-
-    public ValidatableResponse getById(int id) {
-        return given()
-                .when()
-                .get(CHARACTER_END_POINT + "/" + id)
-                .then();
+    @Override
+    protected String getEndpoint() {
+        return CHARACTER_END_POINT;
     }
 }

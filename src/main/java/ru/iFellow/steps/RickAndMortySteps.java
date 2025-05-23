@@ -14,7 +14,7 @@ public class RickAndMortySteps {
     private static final EpisodeAPI episodeApi = new EpisodeAPI();
 
     public List<Character> getListCharactersByName(String name) {
-        return characterApi.getByName(name)
+        return characterApi.getByParam("name", name)
                 .extract()
                 .body()
                 .as(ResponseGetCharacters.class)

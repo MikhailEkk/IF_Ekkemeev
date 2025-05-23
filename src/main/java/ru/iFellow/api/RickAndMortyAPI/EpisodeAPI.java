@@ -1,16 +1,10 @@
 package ru.iFellow.api.RickAndMortyAPI;
 
-import io.restassured.response.ValidatableResponse;
-
-import static io.restassured.RestAssured.given;
-
 public class EpisodeAPI extends BaseRickAndMortyAPI {
-    private static final String EPISODE_END_POINT = "/episode";
+    private static final String EPISODE_END_POINT = props.getString("episode.endpoint");
 
-    public ValidatableResponse getById(int id) {
-        return given()
-                .when()
-                .get(EPISODE_END_POINT + "/" + id)
-                .then();
+    @Override
+    protected String getEndpoint() {
+        return EPISODE_END_POINT;
     }
 }
