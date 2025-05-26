@@ -3,6 +3,7 @@ package ru.iFellow;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.Epic;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.iFellow.pages.DashboardPage;
@@ -16,6 +17,7 @@ import static com.codeborne.selenide.Condition.exactText;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Epic("Тестирование функциональности EduJira")
 public class EduJiraTest extends WebHooks {
 
     private final LoginPage loginPage = new LoginPage();

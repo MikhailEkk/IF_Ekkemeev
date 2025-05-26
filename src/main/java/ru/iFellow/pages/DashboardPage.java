@@ -2,6 +2,7 @@ package ru.iFellow.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import java.time.Duration;
 import static com.codeborne.selenide.Selenide.$x;
@@ -13,6 +14,7 @@ public class DashboardPage {
     private final SelenideElement navTasks = $x("//li[@class='aui-nav-selected']/a[@class='aui-nav-item ']").as("Кнопка навигации 'Задачи'");
     private final SelenideElement nameProject = $x("//a[@id='project-name-val']").as("Название проекта 'Test'");
 
+    @Step("Перейти на вкладку проекта 'Test'")
     public void goToProjectTEST() {
         projectsTab.shouldBe(Condition.visible).click();
         projectTestTab.shouldBe(Condition.visible).click();
@@ -20,6 +22,7 @@ public class DashboardPage {
         nameProject.shouldBe(Condition.visible, Duration.ofSeconds(2000));
     }
 
+    @Step("Проверить, что название проекта 'Test' существует на экране")
     public boolean isNameProjectPresent() {
         return nameProject.exists();
     }
