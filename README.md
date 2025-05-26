@@ -17,9 +17,13 @@
 - **Сборка**: Maven
 
 ## Использование
-Клонируйте репозиторий
+1. Клонируйте репозиторий
 ```bash
 git clone https://github.com/MikhailEkk/IF_Ekkemeev.git
+```
+2. Установите зависимости
+```bash
+mvn clean install
 ```
 
 ## Тестирование
