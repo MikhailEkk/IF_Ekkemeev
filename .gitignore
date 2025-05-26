@@ -4,9 +4,15 @@ target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-idea/
+/idea/
+**/.idea/
+**/.iml
+**/out/
+**/lib/
+**/build/
+**/log/
+**/temp/
 
-.idea_modules/
 temp/
 *.zip
 *.iws
