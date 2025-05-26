@@ -1,4 +1,4 @@
-# Название проекта
+# Auto QA 
 Автоматизированное тестирование платформ [EduJira](https://edujira.ifellow.ru/), [Regres.in](https://reqres.in/) , [Rick and Morty Api](https://rickandmortyapi.com/documentation/#episode-schema).
 
 ## Содержание
