@@ -4,12 +4,8 @@ target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-.idea/replstate.xml
-.idea/**/dataSources/
+.idea/**
+.idea_modules/
 temp/
 *.zip
 *.iws
@@ -40,6 +36,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-### Mac OS ###
-.DS_Store
