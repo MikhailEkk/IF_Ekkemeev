@@ -2,7 +2,6 @@ package ru.iFellow.pages;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import io.qameta.allure.Step;
 import org.openqa.selenium.Keys;
 
 import java.time.Duration;
@@ -38,20 +37,17 @@ public class ProjectTestPage {
     private final SelenideElement fulfilledBtnInForm = $x("//input[@id='issue-workflow-transition-submit']").as("Кнопка 'исполнено' на форме");
     private final SelenideElement fieldInput = $x("//body[@id='tinymce']").as("Поле ввода на фреймах");
 
-    @Step("Получить общее количество задач")
     public int getTotalTasksCount() {
         String totalCount = taskCounter.getText();
         return Integer.parseInt(totalCount.split("из")[1].trim());
     }
 
-    @Step("Создать задачу с указанием названия {taskTopic}")
     public void createNewTask(String taskTopic) {
         createTaskBtn.shouldBe(visible).click();
         inputFieldSubject.shouldBe(visible).setValue(taskTopic);
         submitTaskCreationForm.shouldBe(visible).click();
     }
 
-    @Step("Создать задачу с названием {taskTopic} и заполнением всех полей")
     public void createNewTask2(String taskTopic) {
         createTaskBtn.shouldBe(visible).click();
         inputFieldSubject.shouldBe(visible).setValue(taskTopic);
@@ -89,7 +85,6 @@ public class ProjectTestPage {
         submitTaskCreationForm.shouldBe(visible).click();
     }
 
-    @Step("Провести задачу до статуса 'ГОТОВО'")
     public void completeTask() {
         tasks.click();
         reportedByMeTabs.shouldBe(visible).click();
@@ -109,12 +104,10 @@ public class ProjectTestPage {
                 .click();
     }
 
-    @Step("Нажать на кнопку обновления задач")
     public void updateTasks() {
         updateBtn.click();
     }
 
-    @Step("Поиск {searchRequest} в строке поиска")
     public void search(String searchRequest) {
         searchInput.shouldBe(visible).setValue(searchRequest).pressEnter();
     }
