@@ -13,4 +13,10 @@ public interface AppConfig extends Config {
 
     @Key("end.point.login")
     String endPointLogin();
+
+    @Key("user.password")
+    String password();
+
+    @Key("user.login")
+    String login();
 }

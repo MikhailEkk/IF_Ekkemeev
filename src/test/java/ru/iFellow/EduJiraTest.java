@@ -28,11 +28,8 @@ public class EduJiraTest extends WebHooks {
     @Test
     @DisplayName("Успешная авторизация")
     public void successfulLoginTest() {
-        String login = "AT9";
-        String password = "Qwerty123";
 
-        loginPage.logOn(login, password);
-
+        loginPage.logOn();
         String currentUrl = WebDriverRunner.url();
         assertTrue(currentUrl.contains("Dashboard.jspa"),
                 "Текущий URL не соответствует странице после входа");
