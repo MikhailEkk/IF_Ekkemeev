@@ -2,20 +2,19 @@ package ru.iFellow;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.WebDriverRunner;
+import io.qameta.allure.Epic;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import ru.iFellow.pages.DashboardPage;
 import ru.iFellow.pages.LoginPage;
 import ru.iFellow.pages.ProjectTestPage;
 import ru.iFellow.pages.TestSeleniumATHomeworkPage;
-
 import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.exactText;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+@Epic("Тестирование функциональности EduJira")
 public class EduJiraTest extends WebHooks {
 
     private final LoginPage loginPage = new LoginPage();
@@ -26,14 +25,9 @@ public class EduJiraTest extends WebHooks {
     @Test
     @DisplayName("Успешная авторизация")
     public void successfulLoginTest() {
-        String login = "AT9";
-        String password = "Qwerty123";
-
-        loginPage.logOn(login, password);
-
-        String currentUrl = WebDriverRunner.url();
-        assertTrue(currentUrl.contains("Dashboard.jspa"),
-                "Текущий URL не соответствует странице после входа");
+        DashboardPage dashboardPage = loginPage.login();
+        assertTrue(dashboardPage.isOnPage(),
+                "Текущий URL не соответствует странице Dashboard");
     }
 
     @Test
@@ -51,7 +45,7 @@ public class EduJiraTest extends WebHooks {
         goToProjectTest();
 
         int initialCount = projectTestPage.getTotalTasksCount();
-        projectTestPage.createNewTask("MyTask_Ekk");
+        projectTestPage.createNewTaskSimpleOption("MyTask_Ekk");
 
         boolean isUpdated = Selenide.Wait()
                 .withTimeout(Duration.ofSeconds(15))
@@ -87,7 +81,7 @@ public class EduJiraTest extends WebHooks {
     @DisplayName("Создать новый баг и перевести задачу по статусам до открытого")
     public void createNewBugTestAndComplete() {
         checkTestSeleniumATHomeworkTest();
-        projectTestPage.createNewTask2("MyTestFinal");
+        projectTestPage.createNewTaskAllFieldsFill("MyTestFinal");
         projectTestPage.completeTask();
 
         seleniumATHomeworkPage.getStatusValue().shouldHave(exactText("ГОТОВО"), Duration.ofSeconds(10));

@@ -4,7 +4,15 @@ target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
-.idea/
+.idea
+**/.idea/
+**/.iml
+**/out/
+**/lib/
+**/build/
+**/log/
+**/temp/
+
 temp/
 *.zip
 *.iws
@@ -35,6 +43,3 @@ build/
 
 ### VS Code ###
 .vscode/
-
-### Mac OS ###
-.DS_Store
