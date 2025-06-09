@@ -1,5 +1,9 @@
 package ru.iFellow.api.RegresInAPI;
 
+import io.qameta.allure.Step;
+import io.qameta.allure.restassured.AllureRestAssured;
+import io.restassured.config.LogConfig;
+import io.restassured.config.RestAssuredConfig;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
 import ru.iFellow.dto.RegresIn.User;
@@ -17,12 +21,17 @@ public class UsersAPI {
     private static final String API_KEY_VALUE = PROPS.getString("api.key.value.regres.in");
     private static final String API_KEY = PROPS.getString("api.key.regres.in");
 
+    @Step("Отправить POST запрос на создание пользователя")
     public ValidatableResponse postUser(User user) {
         return given()
+                .filter(new AllureRestAssured())
+                .config(
+                        RestAssuredConfig.config()
+                                .logConfig(LogConfig.logConfig().blacklistHeader("x-api-key")))
                 .baseUri(BASE_URI)
                 .header(API_KEY, API_KEY_VALUE)
                 .contentType(ContentType.JSON)
-                .log().all()
+                .log().ifValidationFails()
                 .when()
                 .body(user)
                 .post(USER_END_POINT)
