@@ -59,7 +59,7 @@ public class RickAndMortySteps {
 
     @Когда("Получили эпизод по id = {int}")
     public void getEpisodeById(int id) {
-        episode = episodeApi.getById(maxEpisodeNumber)
+        episode = episodeApi.getById(id)
                 .extract()
                 .body()
                 .as(Episode.class);
