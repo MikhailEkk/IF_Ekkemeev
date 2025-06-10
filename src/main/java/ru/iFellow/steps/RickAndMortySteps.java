@@ -72,7 +72,7 @@ public class RickAndMortySteps {
 
     @Тогда("Url последнего персонажа в эпизоде должен быть {string}")
     public void checkUrlCharacter(String urlLastCharacterExpected) {
-        lastCharacter = listCharactersString.get(listCharacters.size() - 1);
+        lastCharacter = listCharactersString.get(listCharactersString.size() - 1);
         Assertions.assertEquals(urlLastCharacterExpected, lastCharacter);
     }
 
